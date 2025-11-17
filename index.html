@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank | Modern Banking Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #1a3a8f;
+            --primary-light: #2a4da0;
+            --secondary: #00a8e8;
+            --accent: #00c9a7;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --success: #2ecc71;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #0099cc;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 58, 143, 0.1);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .d-none {
+            display: none !important;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .mt-3 {
+            margin-top: 16px;
+        }
+
+        .mb-3 {
+            margin-bottom: 16px;
+        }
+
+        .p-3 {
+            padding: 16px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info {
+            margin-right: 16px;
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+        }
+
+        .user-account {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+            padding: 24px 0;
+            transition: var(--transition);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(26, 58, 143, 0.05);
+            border-left-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .page-title {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .page-title i {
+            margin-right: 12px;
+        }
+
+        /* Dashboard Styles */
+        .balance-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 32px;
+            border-radius: var(--border-radius);
+            margin-bottom: 24px;
+        }
+
+        .balance-label {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .balance-amount {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .account-number {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .action-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(26, 58, 143, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: var(--primary);
+            font-size: 24px;
+        }
+
+        .action-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .action-desc {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .recent-transactions {
+            margin-top: 32px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .transaction-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(26, 58, 143, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            color: var(--primary);
+        }
+
+        .transaction-details h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .transaction-details p {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .transaction-amount {
+            font-weight: 600;
+        }
+
+        .transaction-amount.positive {
+            color: var(--success);
+        }
+
+        .transaction-amount.negative {
+            color: var(--danger);
+        }
+
+        /* Forms */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 20px;
+        }
+
+        .auth-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 450px;
+            padding: 32px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .auth-title {
+            text-align: center;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .password-strength {
+            height: 4px;
+            background-color: var(--gray-light);
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            transition: var(--transition);
+        }
+
+        .password-strength.weak .password-strength-bar {
+            width: 33%;
+            background-color: var(--danger);
+        }
+
+        .password-strength.medium .password-strength-bar {
+            width: 66%;
+            background-color: var(--warning);
+        }
+
+        .password-strength.strong .password-strength-bar {
+            width: 100%;
+            background-color: var(--success);
+        }
+
+        /* Tables */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .table th, .table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .table th {
+            background-color: rgba(26, 58, 143, 0.05);
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .table tbody tr:hover {
+            background-color: rgba(26, 58, 143, 0.02);
+        }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        /* Notifications */
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .notification-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(26, 58, 143, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            color: var(--primary);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .notification-desc {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 200px;
+            }
+            
+            .quick-actions {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 16px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 8px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                display: none;
+            }
+            
+            .sidebar.active {
+                display: block;
+            }
+            
+            .content {
+                padding: 16px;
+            }
+            
+            .balance-amount {
+                font-size: 28px;
+            }
+            
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+            
+            .user-info {
+                display: none;
+            }
+            
+            .auth-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Authentication Screen -->
+    <div id="auth-screen" class="auth-container">
+        <div class="auth-card">
+            <h2 class="auth-title">SecureBank</h2>
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Login</div>
+                <div class="auth-tab" id="register-tab">Register</div>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="login-email">Email</label>
+                    <input type="email" class="form-control" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="login-password">Password</label>
+                    <input type="password" class="form-control" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group d-flex justify-content-between align-items-center">
+                    <div>
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Remember me</label>
+                    </div>
+                    <a href="#" id="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn w-100">Login</button>
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-outline" id="biometric-login">
+                        <i class="fas fa-fingerprint"></i> Login with Biometrics
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Registration Form -->
+            <form id="register-form" class="d-none">
+                <div class="form-group">
+                    <label class="form-label" for="register-name">Full Name</label>
+                    <input type="text" class="form-control" id="register-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-email">Email</label>
+                    <input type="email" class="form-control" id="register-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-password">Password</label>
+                    <input type="password" class="form-control" id="register-password" placeholder="Create a password" required>
+                    <div class="password-strength">
+                        <div class="password-strength-bar"></div>
+                    </div>
+                    <small>Password must be at least 8 characters with uppercase, lowercase, number, and special character.</small>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-confirm-password">Confirm Password</label>
+                    <input type="password" class="form-control" id="register-confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn w-100">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div id="otp-modal" class="modal-overlay d-none">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Two-Factor Authentication</h3>
+                <button class="modal-close" id="close-otp">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>We've sent a verification code to your registered email. Please enter it below:</p>
+                <div class="form-group">
+                    <label class="form-label" for="otp-code">Verification Code</label>
+                    <input type="text" class="form-control" id="otp-code" placeholder="Enter 6-digit code" maxlength="6">
+                </div>
+                <div class="text-center">
+                    <a href="#" id="resend-otp">Resend Code</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-otp">Cancel</button>
+                <button class="btn" id="verify-otp">Verify</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app" class="d-none">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <div class="navbar">
+                    <a href="#" class="logo">
+                        <i class="fas fa-university"></i> SecureBank
+                    </a>
+                    
+                    <div class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    
+                    <ul class="nav-links" id="nav-links">
+                        <li><a href="#" class="nav-link" data-page="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                        <li><a href="#" class="nav-link" data-page="transfer"><i class="fas fa-exchange-alt"></i> Transfer</a></li>
+                        <li><a href="#" class="nav-link" data-page="bills"><i class="fas fa-file-invoice-dollar"></i> Pay Bills</a></li>
+                        <li><a href="#" class="nav-link" data-page="history"><i class="fas fa-history"></i> History</a></li>
+                        <li><a href="#" class="nav-link" data-page="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                    </ul>
+                    
+                    <div class="user-menu">
+                        <div class="user-info">
+                            <div class="user-name" id="user-name">John Doe</div>
+                            <div class="user-account" id="user-account">Account: •••• 4832</div>
+                        </div>
+                        <div class="avatar" id="user-avatar">JD</div>
+                        <div class="notification-icon-container" style="position: relative; margin-left: 16px;">
+                            <i class="fas fa-bell" id="notification-icon" style="font-size: 20px; cursor: pointer;"></i>
+                            <span class="notification-badge" id="notification-badge">3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="sidebar-link active" data-page="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="transfer"><i class="fas fa-exchange-alt"></i> Transfer Funds</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="bills"><i class="fas fa-file-invoice-dollar"></i> Pay Bills</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="deposit"><i class="fas fa-hand-holding-usd"></i> Deposit</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="withdraw"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="history"><i class="fas fa-history"></i> Transaction History</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="investments"><i class="fas fa-chart-line"></i> Investments</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="budget"><i class="fas fa-chart-pie"></i> Budget Planner</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content" id="content">
+                <!-- Dashboard Page -->
+                <div class="page" id="dashboard-page">
+                    <h1 class="page-title"><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
+                    
+                    <!-- Balance Card -->
+                    <div class="balance-card">
+                        <div class="balance-label">Current Balance</div>
+                        <div class="balance-amount" id="balance-amount">$12,458.75</div>
+                        <div class="account-number" id="account-number">Account: •••• 4832</div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <div class="action-card" data-page="transfer">
+                            <div class="action-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="action-title">Transfer</div>
+                            <div class="action-desc">Send money to accounts</div>
+                        </div>
+                        <div class="action-card" data-page="bills">
+                            <div class="action-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <div class="action-title">Pay Bills</div>
+                            <div class="action-desc">Utilities, loans, etc.</div>
+                        </div>
+                        <div class="action-card" data-page="deposit">
+                            <div class="action-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <div class="action-title">Deposit</div>
+                            <div class="action-desc">Add funds to account</div>
+                        </div>
+                        <div class="action-card" data-page="withdraw">
+                            <div class="action-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="action-title">Withdraw</div>
+                            <div class="action-desc">Get cash from account</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Transactions -->
+                    <div class="card">
+                        <h2 class="section-title">Recent Transactions</h2>
+                        <div id="recent-transactions">
+                            <!-- Transactions will be populated by JavaScript -->
+                        </div>
+                        <div class="text-right mt-3">
+                            <a href="#" class="btn btn-outline" data-page="history">View All Transactions</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Financial Summary -->
+                    <div class="card">
+                        <h2 class="section-title">Financial Summary</h2>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h3>Monthly Income</h3>
+                                <p class="transaction-amount positive">+$4,500.00</p>
+                            </div>
+                            <div>
+                                <h3>Monthly Expenses</h3>
+                                <p class="transaction-amount negative">-$2,340.50</p>
+                            </div>
+                            <div>
+                                <h3>Savings Rate</h3>
+                                <p class="transaction-amount positive">48%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Transfer Page -->
+                <div class="page d-none" id="transfer-page">
+                    <h1 class="page-title"><i class="fas fa-exchange-alt"></i> Transfer Funds</h1>
+                    
+                    <div class="card">
+                        <form id="transfer-form">
+                            <div class="form-group">
+                                <label class="form-label" for="transfer-from">From Account</label>
+                                <select class="form-control" id="transfer-from" required>
+                                    <option value="checking">Checking •••• 4832 ($12,458.75)</option>
+                                    <option value="savings">Savings •••• 7621 ($8,245.30)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="transfer-to">To Account</label>
+                                <select class="form-control" id="transfer-to" required>
+                                    <option value="">Select recipient</option>
+                                    <option value="internal">Internal Account</option>
+                                    <option value="external">External Bank Account</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="recipient-details">
+                                <label class="form-label" for="recipient-name">Recipient Name</label>
+                                <input type="text" class="form-control" id="recipient-name" placeholder="Enter recipient name">
+                                
+                                <label class="form-label mt-3" for="recipient-account">Account Number</label>
+                                <input type="text" class="form-control" id="recipient-account" placeholder="Enter account number">
+                                
+                                <label class="form-label mt-3" for="recipient-bank">Bank Name</label>
+                                <input type="text" class="form-control" id="recipient-bank" placeholder="Enter bank name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="transfer-amount">Amount</label>
+                                <input type="number" class="form-control" id="transfer-amount" placeholder="0.00" min="0.01" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="transfer-description">Description</label>
+                                <input type="text" class="form-control" id="transfer-description" placeholder="Add a note (optional)">
+                            </div>
+                            <button type="submit" class="btn w-100">Continue</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Other pages would follow similar structure -->
+                <!-- For brevity, I'll include placeholders for the other pages -->
+                
+                <!-- Bills Page -->
+                <div class="page d-none" id="bills-page">
+                    <h1 class="page-title"><i class="fas fa-file-invoice-dollar"></i> Pay Bills</h1>
+                    <div class="card">
+                        <p>Bill payment functionality would be implemented here.</p>
+                    </div>
+                </div>
+                
+                <!-- History Page -->
+                <div class="page d-none" id="history-page">
+                    <h1 class="page-title"><i class="fas fa-history"></i> Transaction History</h1>
+                    <div class="card">
+                        <p>Transaction history with filtering options would be implemented here.</p>
+                    </div>
+                </div>
+                
+                <!-- Settings Page -->
+                <div class="page d-none" id="settings-page">
+                    <h1 class="page-title"><i class="fas fa-cog"></i> Settings</h1>
+                    <div class="card">
+                        <p>User settings and preferences would be implemented here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transfer Confirmation Modal -->
+    <div id="transfer-confirm-modal" class="modal-overlay d-none">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Transfer</h3>
+                <button class="modal-close" id="close-transfer-confirm">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Please review your transfer details:</p>
+                <div class="transfer-details">
+                    <p><strong>From:</strong> <span id="confirm-from">Checking •••• 4832</span></p>
+                    <p><strong>To:</strong> <span id="confirm-to">External Account</span></p>
+                    <p><strong>Amount:</strong> <span id="confirm-amount">$0.00</span></p>
+                    <p><strong>Description:</strong> <span id="confirm-description">-</span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-transfer">Cancel</button>
+                <button class="btn" id="confirm-transfer">Confirm Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Modal -->
+    <div id="notifications-modal" class="modal-overlay d-none">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Notifications</h3>
+                <button class="modal-close" id="close-notifications">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Transfer Completed</div>
+                        <div class="notification-desc">Your transfer to John Smith was successful</div>
+                        <div class="notification-time">2 hours ago</div>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Card Transaction</div>
+                        <div class="notification-desc">Purchase at Amazon.com - $45.67</div>
+                        <div class="notification-time">Yesterday</div>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Security Alert</div>
+                        <div class="notification-desc">New login from unknown device</div>
+                        <div class="notification-time">2 days ago</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="mark-all-read">Mark All as Read</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for the application
+        const sampleData = {
+            user: {
+                name: "John Doe",
+                email: "john.doe@example.com",
+                accountNumber: "•••• 4832",
+                balance: 12458.75,
+                avatar: "JD"
+            },
+            transactions: [
+                { id: 1, type: "debit", description: "Amazon Purchase", amount: 45.67, date: "2023-06-15", category: "Shopping" },
+                { id: 2, type: "credit", description: "Salary Deposit", amount: 4500.00, date: "2023-06-10", category: "Income" },
+                { id: 3, type: "debit", description: "Electricity Bill", amount: 120.50, date: "2023-06-05", category: "Utilities" },
+                { id: 4, type: "debit", description: "Grocery Store", amount: 85.32, date: "2023-06-02", category: "Food" },
+                { id: 5, type: "credit", description: "Transfer from Savings", amount: 500.00, date: "2023-05-28", category: "Transfer" }
+            ]
+        };
+
+        // DOM Elements
+        const authScreen = document.getElementById('auth-screen');
+        const app = document.getElementById('app');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const otpModal = document.getElementById('otp-modal');
+        const transferConfirmModal = document.getElementById('transfer-confirm-modal');
+        const notificationsModal = document.getElementById('notifications-modal');
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const navLinks = document.getElementById('nav-links');
+        const notificationIcon = document.getElementById('notification-icon');
+        const logoutBtn = document.getElementById('logout-btn');
+        const biometricLogin = document.getElementById('biometric-login');
+        const passwordInput = document.getElementById('register-password');
+        const passwordStrength = document.querySelector('.password-strength');
+        const transferForm = document.getElementById('transfer-form');
+        const recentTransactionsContainer = document.getElementById('recent-transactions');
+        const balanceAmount = document.getElementById('balance-amount');
+        const accountNumber = document.getElementById('account-number');
+        const userName = document.getElementById('user-name');
+        const userAccount = document.getElementById('user-account');
+        const userAvatar = document.getElementById('user-avatar');
+        const notificationBadge = document.getElementById('notification-badge');
+
+        // Page navigation elements
+        const pages = document.querySelectorAll('.page');
+        const navLinksAll = document.querySelectorAll('.nav-link, .sidebar-link, .action-card');
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Display recent transactions on dashboard
+            displayRecentTransactions();
+            
+            // Update user info
+            updateUserInfo();
+        });
+
+        // Set up all event listeners
+        function setupEventListeners() {
+            // Auth tab switching
+            loginTab.addEventListener('click', function() {
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                loginForm.classList.remove('d-none');
+                registerForm.classList.add('d-none');
+            });
+            
+            registerTab.addEventListener('click', function() {
+                registerTab.classList.add('active');
+                loginTab.classList.remove('active');
+                registerForm.classList.remove('d-none');
+                loginForm.classList.add('d-none');
+            });
+            
+            // Login form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                // Simple validation
+                if (email && password) {
+                    // Show OTP modal for 2FA simulation
+                    otpModal.classList.remove('d-none');
+                } else {
+                    alert('Please enter both email and password');
+                }
+            });
+            
+            // Register form submission
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const confirmPassword = document.getElementById('register-confirm-password').value;
+                
+                // Validation
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                if (!isPasswordStrong(password)) {
+                    alert('Password does not meet security requirements');
+                    return;
+                }
+                
+                // Simulate registration success
+                alert('Registration successful! You can now log in.');
+                loginTab.click();
+            });
+            
+            // Password strength indicator
+            passwordInput.addEventListener('input', function() {
+                const password = passwordInput.value;
+                updatePasswordStrength(password);
+            });
+            
+            // OTP modal handlers
+            document.getElementById('close-otp').addEventListener('click', function() {
+                otpModal.classList.add('d-none');
+            });
+            
+            document.getElementById('cancel-otp').addEventListener('click', function() {
+                otpModal.classList.add('d-none');
+            });
+            
+            document.getElementById('verify-otp').addEventListener('click', function() {
+                const otpCode = document.getElementById('otp-code').value;
+                
+                if (otpCode.length === 6) {
+                    // Simulate successful login
+                    authScreen.classList.add('d-none');
+                    app.classList.remove('d-none');
+                    otpModal.classList.add('d-none');
+                } else {
+                    alert('Please enter a valid 6-digit code');
+                }
+            });
+            
+            // Biometric login simulation
+            biometricLogin.addEventListener('click', function() {
+                alert('Biometric authentication would be triggered here. For this demo, logging you in directly.');
+                authScreen.classList.add('d-none');
+                app.classList.remove('d-none');
+            });
+            
+            // Hamburger menu for mobile
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                sidebar.classList.toggle('active');
+            });
+            
+            // Notification icon click
+            notificationIcon.addEventListener('click', function() {
+                notificationsModal.classList.remove('d-none');
+                // Clear notification badge
+                notificationBadge.textContent = '0';
+                notificationBadge.style.display = 'none';
+            });
+            
+            // Close notifications modal
+            document.getElementById('close-notifications').addEventListener('click', function() {
+                notificationsModal.classList.add('d-none');
+            });
+            
+            // Mark all notifications as read
+            document.getElementById('mark-all-read').addEventListener('click', function() {
+                notificationsModal.classList.add('d-none');
+            });
+            
+            // Logout button
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to log out?')) {
+                    app.classList.add('d-none');
+                    authScreen.classList.remove('d-none');
+                    // Reset forms
+                    loginForm.reset();
+                    registerForm.reset();
+                }
+            });
+            
+            // Page navigation
+            navLinksAll.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    
+                    // Hide all pages
+                    pages.forEach(page => {
+                        page.classList.add('d-none');
+                    });
+                    
+                    // Show selected page
+                    document.getElementById(pageId).classList.remove('d-none');
+                    
+                    // Update active state in sidebar
+                    document.querySelectorAll('.sidebar-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Transfer form submission
+            transferForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const fromAccount = document.getElementById('transfer-from').value;
+                const toAccount = document.getElementById('transfer-to').value;
+                const amount = document.getElementById('transfer-amount').value;
+                const description = document.getElementById('transfer-description').value;
+                
+                // Update confirmation modal with transfer details
+                document.getElementById('confirm-from').textContent = 
+                    document.getElementById('transfer-from').options[document.getElementById('transfer-from').selectedIndex].text;
+                
+                let toText = '';
+                if (toAccount === 'internal') {
+                    toText = 'Internal Account';
+                } else if (toAccount === 'external') {
+                    toText = document.getElementById('recipient-name').value + ' - ' + 
+                             document.getElementById('recipient-bank').value;
+                }
+                document.getElementById('confirm-to').textContent = toText;
+                
+                document.getElementById('confirm-amount').textContent = '$' + parseFloat(amount).toFixed(2);
+                document.getElementById('confirm-description').textContent = description || '-';
+                
+                // Show confirmation modal
+                transferConfirmModal.classList.remove('d-none');
+            });
+            
+            // Transfer confirmation handlers
+            document.getElementById('close-transfer-confirm').addEventListener('click', function() {
+                transferConfirmModal.classList.add('d-none');
+            });
+            
+            document.getElementById('cancel-transfer').addEventListener('click', function() {
+                transferConfirmModal.classList.add('d-none');
+            });
+            
+            document.getElementById('confirm-transfer').addEventListener('click', function() {
+                const amount = parseFloat(document.getElementById('transfer-amount').value);
+                
+                // Update balance
+                sampleData.user.balance -= amount;
+                updateUserInfo();
+                
+                // Add transaction to history
+                sampleData.transactions.unshift({
+                    id: sampleData.transactions.length + 1,
+                    type: "debit",
+                    description: document.getElementById('transfer-description').value || "Funds Transfer",
+                    amount: amount,
+                    date: new Date().toISOString().split('T')[0],
+                    category: "Transfer"
+                });
+                
+                // Update recent transactions
+                displayRecentTransactions();
+                
+                // Close modal and reset form
+                transferConfirmModal.classList.add('d-none');
+                transferForm.reset();
+                
+                // Show success message
+                alert(`Transfer of $${amount.toFixed(2)} completed successfully!`);
+            });
+            
+            // Recipient account type change
+            document.getElementById('transfer-to').addEventListener('change', function() {
+                const recipientDetails = document.getElementById('recipient-details');
+                if (this.value === 'external') {
+                    recipientDetails.style.display = 'block';
+                } else {
+                    recipientDetails.style.display = 'none';
+                }
+            });
+        }
+
+        // Display recent transactions on dashboard
+        function displayRecentTransactions() {
+            recentTransactionsContainer.innerHTML = '';
+            
+            // Show only the 5 most recent transactions
+            const recentTransactions = sampleData.transactions.slice(0, 5);
+            
+            recentTransactions.forEach(transaction => {
+                const transactionElement = document.createElement('div');
+                transactionElement.className = 'transaction-item';
+                
+                const iconClass = transaction.type === 'credit' ? 'fa-arrow-down' : 'fa-arrow-up';
+                const amountClass = transaction.type === 'credit' ? 'positive' : 'negative';
+                const amountSign = transaction.type === 'credit' ? '+' : '-';
+                
+                transactionElement.innerHTML = `
+                    <div class="transaction-info">
+                        <div class="transaction-icon">
+                            <i class="fas ${iconClass}"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>${transaction.description}</h4>
+                            <p>${formatDate(transaction.date)} • ${transaction.category}</p>
+                        </div>
+                    </div>
+                    <div class="transaction-amount ${amountClass}">
+                        ${amountSign}$${transaction.amount.toFixed(2)}
+                    </div>
+                `;
+                
+                recentTransactionsContainer.appendChild(transactionElement);
+            });
+        }
+
+        // Update user information in the header
+        function updateUserInfo() {
+            balanceAmount.textContent = `$${sampleData.user.balance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            accountNumber.textContent = `Account: ${sampleData.user.accountNumber}`;
+            userName.textContent = sampleData.user.name;
+            userAccount.textContent = `Account: ${sampleData.user.accountNumber}`;
+            userAvatar.textContent = sampleData.user.avatar;
+        }
+
+        // Check if password meets strength requirements
+        function isPasswordStrong(password) {
+            // At least 8 characters, with uppercase, lowercase, number and special character
+            const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+            return strongRegex.test(password);
+        }
+
+        // Update password strength indicator
+        function updatePasswordStrength(password) {
+            // Reset classes
+            passwordStrength.classList.remove('weak', 'medium', 'strong');
+            
+            if (password.length === 0) {
+                return;
+            }
+            
+            // Simple strength calculation
+            let strength = 0;
+            
+            // Length check
+            if (password.length >= 8) strength++;
+            
+            // Contains lowercase
+            if (/[a-z]/.test(password)) strength++;
+            
+            // Contains uppercase
+            if (/[A-Z]/.test(password)) strength++;
+            
+            // Contains numbers
+            if (/[0-9]/.test(password)) strength++;
+            
+            // Contains special characters
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            // Apply appropriate class
+            if (strength <= 2) {
+                passwordStrength.classList.add('weak');
+            } else if (strength <= 4) {
+                passwordStrength.classList.add('medium');
+            } else {
+                passwordStrength.classList.add('strong');
+            }
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Simulate session timeout (auto-logout after 5 minutes of inactivity)
+        let inactivityTime = function() {
+            let time;
+            window.onload = resetTimer;
+            document.onmousemove = resetTimer;
+            document.onkeypress = resetTimer;
+            
+            function logout() {
+                alert('Session expired due to inactivity. Please log in again.');
+                app.classList.add('d-none');
+                authScreen.classList.remove('d-none');
+            }
+            
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 300000); // 5 minutes
+            }
+        };
+        
+        // Initialize inactivity timer
+        inactivityTime();
+    </script>
+</body>
+</html>
